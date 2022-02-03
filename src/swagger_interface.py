@@ -2,7 +2,6 @@ from wsgiref import headers
 import PySimpleGUI as sg
 from swagger_extractor import Extractor
 import os
-import subprocess 
 
 sg.theme('Default1')   # Add a touch of color
 
@@ -16,7 +15,7 @@ layout = [  [sg.Text('Enter the analysis ID')],
             #[sg.InputText(key = "metrics")],
             #[sg.Text('Data Fields')], 
             #data_field_widgets,
-            #[sg.Output(size=(70,10), key='-OUTPUT-')],
+            [sg.Output(size=(70,10), key='-OUTPUT-')],
             [sg.Button('Run'), sg.Button('Close')],
             [sg.StatusBar("Ready", key="status")]]
 
@@ -32,21 +31,8 @@ while True:
     if event == "Run":
 
         window.Element("status").update("Running")
-
-        # base_url = "http://192.168.130.20:3882/analysis_data/api/v1/data/retrieve?"
         analysis_id = values["analysis_id"]
-        # metric_names = values["metrics"]
-
-        ## Theres a better way to do this
-        # data_fields_for_query = []
-        # for field in data_fields:
-        #     if values[field]:
-        #         data_fields_for_query.append(field)
-        
-
-        # data_fields_for_query = "%2c".join(data_fields_for_query)
-        # print(data_fields_for_query)
-
+ 
         extractor = Extractor(analysis_id)
 
         out_folder = values["OutputLocation"]
