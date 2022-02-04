@@ -1,0 +1,6 @@
+build/*
+env/*
+src/__pycache__/*  
+*.spec
+*.xlsx
+*.zip

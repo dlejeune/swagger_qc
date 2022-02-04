@@ -24,6 +24,7 @@ window = sg.Window('Swagger Extractor', layout)
 # Event Loop to process "events" and get the "values" of the inputs
 
 
+
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Close': # if user closes window or clicks cancel
@@ -38,7 +39,7 @@ while True:
         out_folder = values["OutputLocation"]
         
         window.perform_long_operation(lambda:
-        extractor.extract_join_save_allmetrics(out_folder),
+        extractor.qc_standard(out_folder),
         '-OPERATION DONE-')
         
     if event == "-OPERATION DONE-":
